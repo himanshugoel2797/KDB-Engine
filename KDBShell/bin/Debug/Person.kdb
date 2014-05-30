@@ -2,8 +2,8 @@
 	var(property) Alive
 	var(property) Mortal
 
-object Himanshu is [Human]:
-	var(string) Name = "Himanshu Goel"
+object John is [Human]:
+	var(string) Name = "John Down"
 	var(property) Code
 
 component Wood:
@@ -12,7 +12,8 @@ component Wood:
 object Dinner_Table of [Glass] is [Table]:
 	var(string) purpose = "Eat Dinner"
 	var(int) Birth_Year = 1997
-	var(int) Age = [funcCall(CurrentTime.Year)]		//Allow C# function calls for runtime calculation of certain parameters
+	var(int) Age = [calculateAge(Birth_Year)]
+	//Allow C# function calls for runtime calculation of certain parameters
 
 object Table of [Wood]:
 	var(int) Legs = 4

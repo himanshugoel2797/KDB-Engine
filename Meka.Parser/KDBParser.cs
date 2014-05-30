@@ -68,8 +68,8 @@ namespace Meka.Parser
 
         public bool Exists(string className, string variableName)
         {
-            className = new PorterStemmer().stemTerm(Regex.Replace(className, @"(\p{P})", "")).ToLower();
-            variableName = new PorterStemmer().stemTerm(Regex.Replace(variableName, @"(\p{P})", "")).ToLower();
+            className = new string(new PorterStemmer().stemTerm(className).ToLower().Where(c => !char.IsPunctuation(c)).ToArray());
+            variableName = new string(new PorterStemmer().stemTerm(variableName).ToLower().Where(c => !char.IsPunctuation(c)).ToArray());
 
 
             bool exists = Knowledge[className].Exists((Details d) => { return d.Name.ToLower() == variableName.ToLower(); });
@@ -102,8 +102,14 @@ namespace Meka.Parser
 
         public Details GetValue(string className, string variableName)
         {
-            className = Regex.Replace(new PorterStemmer().stemTerm(className), @"(\p{P})", "");
-            variableName = Regex.Replace(new PorterStemmer().stemTerm(variableName), @"(\p{P})", "");
+            if (!className.Contains('_'))
+            {
+                className = new string(new PorterStemmer().stemTerm(className).ToLower().Where(c => !char.IsPunctuation(c)).ToArray());
+            }
+
+            className = className.ToLower();
+            variableName = new string(new PorterStemmer().stemTerm(variableName).ToLower().Where(c => !char.IsPunctuation(c)).ToArray());
+            variableName = variableName.ToLower();
 
             try
             {
@@ -113,15 +119,16 @@ namespace Meka.Parser
                 if (tmp.Value.StartsWith("[") && tmp.Value.EndsWith("]") &&
                     CSharpFunctionCalls.ContainsKey(tmp.Value.Remove("[").Remove("]").RemoveRange('(', ')')))
                 {
-                    string[] info = tmp.Value.SubstringRange('(', ')').Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                    string[] info = tmp.Value.SubstringRange('(', ')').Remove("(").Remove(")").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                     Details[] args = new Details[info.Length];
                     for (int c = 0; c < info.Length; c++)
                     {
                         string[] details = info[c].Split('.');
-                        args[c] = Knowledge[(details.Length == 1) ? className : details[0]].Find((Details d) => { return d.Name == ((details.Length == 1) ? info[c] : details[1]); });
+                        args[c] = Knowledge[(details.Length == 1) ? className : details[0]].Find((Details d) => { return d.Name.ToLower() == ((details.Length == 1) ? info[c] : details[1]).ToLower(); });
                     }
 
                     tmp = CSharpFunctionCalls[tmp.Value.Remove("[").Remove("]").RemoveRange('(', ')')](args);
+                    tmp.Name = variableName;
                 }
                 return tmp;
             }
@@ -190,16 +197,16 @@ namespace Meka.Parser
                 }
                 else if (line.StartsWith(expectedRecursion + "var"))
                 {
-                    string[] parts = line.Remove(expectedRecursion + "var").Remove("(").Remove(")").Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                    string[] parts = line.Remove(expectedRecursion + "var").Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                     Details d = new Details();
                     
                     Types t = Types.Undefined;
 
-                         if (parts[0].Trim().ToLower() == "property") t = Types.Property;
-                    else if (parts[0].Trim().ToLower() == "int") t = Types.Int;
-                    else if (parts[0].Trim().ToLower() == "string") t = Types.String;
-                    else if (parts[0].Trim().ToLower() == "float") t = Types.Float;
-                    else if (parts[0].Trim().ToLower() == "double") t = Types.Double;
+                         if (parts[0].Trim().ToLower() == "(property)") t = Types.Property;
+                    else if (parts[0].Trim().ToLower() == "(int)") t = Types.Int;
+                    else if (parts[0].Trim().ToLower() == "(string)") t = Types.String;
+                    else if (parts[0].Trim().ToLower() == "(float)") t = Types.Float;
+                    else if (parts[0].Trim().ToLower() == "(double)") t = Types.Double;
                          
                     d.Type = t;
                     d.Name = parts[1].Trim().ToLower();

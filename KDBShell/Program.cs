@@ -9,10 +9,20 @@ namespace KDBShell
 {
     class Program
     {
+        static KDBParser.Details CalculateAge(KDBParser.Details[] details)
+        {
+            int year = int.Parse(details[0].Value);
+            return new KDBParser.Details()
+            {
+                Value = (DateTime.Today.Year - year).ToString()
+            };
+        }
+
         static void Main(string[] args)
         {
             Console.Title = "KDBShell";
             KDBParser parser = new KDBParser("");
+            parser.RegisterFunctionCall("calculateAge", CalculateAge);
 
             while (true)
             {
