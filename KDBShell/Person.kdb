@@ -9,7 +9,7 @@ object John is [Human]:
 component Wood:
 	var(property) Hard
 
-object Dinner_Table of [Glass] is [Table]:
+object Dinner_Table is [Table]:
 	var(string) purpose = "Eat Dinner"
 	var(int) Birth_Year = 1997
 	var(int) Age = [calculateAge(Birth_Year)]

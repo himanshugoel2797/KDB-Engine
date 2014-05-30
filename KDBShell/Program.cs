@@ -45,9 +45,20 @@ namespace KDBShell
                 }
                 else if (input.StartsWith("what is", true, null))
                 {
-                    input = input.Replace("what is", "");
+                    input = input.Replace("what is", "").Trim();
 
-                    Console.WriteLine(parser.GetValue(input.Split(' ')[1].Trim(), input.Split(' ')[2].Trim()).Value);
+                    Console.WriteLine(parser.GetValue(input.Split(' ')[0].Trim(), input.Split(' ')[1].Trim()).Value);
+                }
+                else if (input.StartsWith("what contains", true, null))
+                {
+                    input = input.Replace("what contains", "").Replace("?", "").Trim();
+
+                    string[] list = parser.GetClassWithValues(input.Split(','));
+
+                    foreach (string item in list)
+                    {
+                        Console.WriteLine(item);
+                    }
                 }
                 else if (!string.IsNullOrEmpty(input))
                 {

@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeParser.cs" />
+    <Compile Include="EqualityLambda.cs" />
     <Compile Include="File.cs" />
     <Compile Include="GlobalData.cs" />
     <Compile Include="Helpers.cs" />

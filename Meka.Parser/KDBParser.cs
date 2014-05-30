@@ -68,9 +68,14 @@ namespace Meka.Parser
 
         public bool Exists(string className, string variableName)
         {
-            className = new string(new PorterStemmer().stemTerm(className).ToLower().Where(c => !char.IsPunctuation(c)).ToArray());
-            variableName = new string(new PorterStemmer().stemTerm(variableName).ToLower().Where(c => !char.IsPunctuation(c)).ToArray());
+            if (!className.Contains('_'))
+            {
+                className = new string(new PorterStemmer().stemTerm(className).ToLower().Where(c => !char.IsPunctuation(c)).ToArray());
+            }
 
+            className = className.ToLower();
+            variableName = new string(new PorterStemmer().stemTerm(variableName).ToLower().Where(c => !char.IsPunctuation(c)).ToArray());
+            variableName = variableName.ToLower();
 
             bool exists = Knowledge[className].Exists((Details d) => { return d.Name.ToLower() == variableName.ToLower(); });
 
@@ -136,6 +141,29 @@ namespace Meka.Parser
             {
                 return default(Details);
             }
+        }
+
+        public string[] GetClassWithValues(string[] vals)
+        {
+            List<string> className = new List<string>();
+
+            Details[] tmp = new Details[vals.Length];
+            for(int c = 0; c < tmp.Length; c++)
+            {
+                tmp[c] = new Details(){
+                    Name = vals[c]
+                };
+            }
+
+            foreach (string s in Knowledge.Keys)
+            {
+                if (Knowledge[s].Intersect(tmp, new LambdaComparer<Details>((d, e) => d.Name.ToLower() == e.Name.ToLower())).Any())
+                {
+                    className.Add(s);
+                }
+            }
+
+            return className.ToArray();
         }
 
         public void Parse()
