@@ -1,0 +1,31 @@
+﻿using XSystem from "Systems.mek"
+using YSystem from "Systems.mek"
+import "KnowledgeDB.mek"
+
+Database<string> YStringTable:
+	"Hello"
+	"World" 
+
+System Main:
+	var(int) X
+	var(string) Y
+
+	Constraints:
+		X is not equal to 0
+		X.Length is less than 10
+		Y is not equal to string.Empty
+		Y is in YStringTable
+
+	Rules:
+		(X == value):
+			[C#]System.Console.WriteLine(X)
+
+	Construct(string[] args):
+		Children.Add(XSystem "XSys")
+		Children.Add(YSystem "YSys")
+		Children["XSys"].Permissions.Read("X", "Y")
+		Children["YSys"].Permissions.ReadWrite("X", "Y")
+
+	Process():
+		var(string) message = System.Console.ReadLine()
+		Rules.Process(message)

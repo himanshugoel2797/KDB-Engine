@@ -1,0 +1,19 @@
+﻿object Human:
+	var(property) Alive
+	var(property) Mortal
+
+object Himanshu is [Human]:
+	var(string) Name = "Himanshu Goel"
+	var(property) Code
+
+component Wood:
+	var(property) Hard
+
+object Dinner_Table of [Glass] is [Table]:
+	var(string) purpose = "Eat Dinner"
+	var(int) Birth_Year = 1997
+	var(int) Age = [funcCall(CurrentTime.Year)]		//Allow C# function calls for runtime calculation of certain parameters
+
+object Table of [Wood]:
+	var(int) Legs = 4
+	var(string) Purpose = "Put things"

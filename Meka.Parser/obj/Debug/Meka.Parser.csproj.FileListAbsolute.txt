@@ -1,0 +1,5 @@
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser\bin\Debug\Meka.Parser.dll
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser\bin\Debug\Meka.Parser.pdb
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser\obj\Debug\Meka.Parser.csprojResolveAssemblyReference.cache
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser\obj\Debug\Meka.Parser.dll
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser\obj\Debug\Meka.Parser.pdb

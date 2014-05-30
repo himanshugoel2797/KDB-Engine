@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meka.Parser", "Meka.Parser\Meka.Parser.csproj", "{46861D72-90B8-44FA-B750-90AE016EC260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterMeka", "InterMeka\InterMeka.csproj", "{88016ED3-49F8-4C96-9A46-854985CE9790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meka.Parser.UnitTests", "Meka.Parser.UnitTests\Meka.Parser.UnitTests.csproj", "{7BD502D8-EC27-454C-B3E0-CF0B5E3F7767}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KDBShell", "KDBShell\KDBShell.csproj", "{07503F67-2B5A-4204-BCBA-D7C2C2F774B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46861D72-90B8-44FA-B750-90AE016EC260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46861D72-90B8-44FA-B750-90AE016EC260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46861D72-90B8-44FA-B750-90AE016EC260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46861D72-90B8-44FA-B750-90AE016EC260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88016ED3-49F8-4C96-9A46-854985CE9790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88016ED3-49F8-4C96-9A46-854985CE9790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88016ED3-49F8-4C96-9A46-854985CE9790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88016ED3-49F8-4C96-9A46-854985CE9790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BD502D8-EC27-454C-B3E0-CF0B5E3F7767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BD502D8-EC27-454C-B3E0-CF0B5E3F7767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BD502D8-EC27-454C-B3E0-CF0B5E3F7767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BD502D8-EC27-454C-B3E0-CF0B5E3F7767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07503F67-2B5A-4204-BCBA-D7C2C2F774B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07503F67-2B5A-4204-BCBA-D7C2C2F774B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07503F67-2B5A-4204-BCBA-D7C2C2F774B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07503F67-2B5A-4204-BCBA-D7C2C2F774B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser.UnitTests\bin\Debug\Meka.Parser.UnitTests.dll
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser.UnitTests\bin\Debug\Meka.Parser.UnitTests.pdb
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser.UnitTests\bin\Debug\Meka.Parser.dll
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser.UnitTests\bin\Debug\Meka.Parser.pdb
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser.UnitTests\obj\Debug\Meka.Parser.UnitTests.csprojResolveAssemblyReference.cache
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser.UnitTests\obj\Debug\Meka.Parser.UnitTests.dll
+c:\users\himanshu\documents\visual studio 2012\Projects\Meka\Meka.Parser.UnitTests\obj\Debug\Meka.Parser.UnitTests.pdb
+C:\Users\Himanshu\Documents\Visual Studio 2012\Projects\Meka\Meka.Parser.UnitTests\bin\Debug\KnowledgeDB.kdb
