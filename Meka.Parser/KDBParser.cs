@@ -8,9 +8,17 @@ using HookedCall = Meka.Parser.KDB.HookedCall;
 
 namespace Meka.Parser
 {
+    /// <summary>
+    /// Parses KDB files
+    /// </summary>
     public class KDBParser
     {
         #region Static Object Factories
+        /// <summary>
+        /// Create a new KDBParser object from a file
+        /// </summary>
+        /// <param name="path">The path to the file</param>
+        /// <returns>a new KDBParser object</returns>
         public static KDBParser FromFile(string path)
         {
             return new KDBParser(File.ReadAllText(path));
@@ -18,11 +26,17 @@ namespace Meka.Parser
         #endregion
 
         #region Data Structures
+        /// <summary>
+        /// The types available in the KnowledgeDB system
+        /// </summary>
         public enum Types
         {
             Undefined, String, Int, Property, Float, Double, Base, Child
         }
 
+        /// <summary>
+        /// Stores info extracted from the KnowledgeDB
+        /// </summary>
         public struct Details
         {
             public string Name { get; set; }
@@ -39,6 +53,10 @@ namespace Meka.Parser
 
         public string Code { get; set; }
 
+        /// <summary>
+        /// Create a new KDBParser object
+        /// </summary>
+        /// <param name="code">The KDB code</param>
         public KDBParser(string code)
         {
             this.Code = code;
@@ -59,11 +77,20 @@ namespace Meka.Parser
             KnowledgeByType[new Tuple<Types, string>(details.Type, name)].Add(details);
         }
 
+        /// <summary>
+        /// Register a native function call with the KDB engine
+        /// </summary>
+        /// <param name="callName">The name of the function in KDB</param>
+        /// <param name="call">The function to call</param>
         public void RegisterFunctionCall(string callName, HookedCall call)
         {
             CSharpFunctionCalls[callName] = call;
         }
 
+        /// <summary>
+        /// Returns a KDB object based on this KDBParser instance
+        /// </summary>
+        /// <returns>A KDB object based on this KDBParser instance</returns>
         public KDB GetKDB()
         {
             return new KDB()
@@ -76,6 +103,10 @@ namespace Meka.Parser
             };
         }
 
+        /// <summary>
+        /// Parse the KDB data
+        /// </summary>
+        /// <returns>A KDB object based on the parsed data</returns>
         public KDB Parse()
         {
             Stack<string> Recursion = new Stack<string>();

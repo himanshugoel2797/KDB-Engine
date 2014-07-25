@@ -8,17 +8,51 @@ using Types = Meka.Parser.KDBParser.Types;
 
 namespace Meka.Parser
 {
+    /// <summary>
+    /// KnowledgeDB data container
+    /// </summary>
     public struct KDB
     {
-        public Dictionary<Tuple<Meka.Parser.KDBParser.Types, string>, List<Meka.Parser.KDBParser.Details>> KnowledgeByType { get; set; }
-        public Dictionary<string, List<Meka.Parser.KDBParser.Details>> Knowledge { get; set; }
+        /// <summary>
+        /// Stores all knowledge based on its type
+        /// </summary>
+        public Dictionary<
+            Tuple<Meka.Parser.KDBParser.Types, string>,
+            List<Meka.Parser.KDBParser.Details>
+            > KnowledgeByType { get; set; }
+
+        /// <summary>
+        /// Stores all knowledge by name
+        /// </summary>
+        public Dictionary<string, 
+            List<Meka.Parser.KDBParser.Details>
+            > Knowledge { get; set; }
+
+        /// <summary>
+        /// Stores a list of defined objects
+        /// </summary>
         public List<string> Objects { get; set; }
+
+        /// <summary>
+        /// Stores a list of defined components
+        /// </summary>
         public List<string> Components { get; set; }
+
+        /// <summary>
+        /// Engine hooked function call delegate
+        /// </summary>
+        /// <param name="funcName">The KDB name of the function called</param>
+        /// <param name="Args">The arguments passed to the function</param>
+        /// <returns></returns>
         public delegate Meka.Parser.KDBParser.Details HookedCall(string funcName, Meka.Parser.KDBParser.Details[] Args);
 
         internal Dictionary<string, HookedCall> CSharpFunctionCalls { get; set; }
 
-
+        /// <summary>
+        /// Add new knowledge to the system
+        /// </summary>
+        /// <param name="name">The name/identifier of the knowledge</param>
+        /// <param name="details">The information about the knowledge</param>
         public void Add(string name, Details details)
         {
             if (!Knowledge.ContainsKey(name)) Knowledge[name] = new List<Details>();
@@ -28,11 +62,22 @@ namespace Meka.Parser
             KnowledgeByType[new Tuple<Types, string>(details.Type, name)].Add(details);
         }
 
+        /// <summary>
+        /// Register a native function call with the KDB engine
+        /// </summary>
+        /// <param name="callName">The name of the function in KDB</param>
+        /// <param name="call">The function to call</param>
         public void RegisterFunctionCall(string callName, HookedCall call)
         {
             CSharpFunctionCalls[callName] = call;
         }
 
+        /// <summary>
+        /// Checks if the specific data exists
+        /// </summary>
+        /// <param name="className">The 'class' to check</param>
+        /// <param name="variableName">The specific variable to check</param>
+        /// <returns>true if the data exists, otherwise false</returns>
         public bool Exists(string className, string variableName)
         {
             if (!className.Contains('_'))
@@ -43,6 +88,8 @@ namespace Meka.Parser
             className = className.ToLower();
             variableName = new string(new PorterStemmer().stemTerm(variableName).ToLower().Where(c => !char.IsPunctuation(c)).ToArray());
             variableName = variableName.ToLower();
+
+            if (!Knowledge.ContainsKey(className)) return false;
 
             bool exists = Knowledge[className].Exists((Details d) => { return d.Name.ToLower() == variableName.ToLower(); });
 
@@ -72,6 +119,12 @@ namespace Meka.Parser
             return exists;
         }
 
+        /// <summary>
+        /// Get the value of some knowledge data
+        /// </summary>
+        /// <param name="className">The 'class' to check</param>
+        /// <param name="variableName">The specific variable to check</param>
+        /// <returns>The value of the data</returns>
         public Details GetValue(string className, string variableName)
         {
             if (!className.Contains('_'))
@@ -111,7 +164,12 @@ namespace Meka.Parser
             }
         }
 
-        public string[] GetClassWithValues(string[] vals)
+        /// <summary>
+        /// Get a list of 'classes' which have a certain set of variables defined
+        /// </summary>
+        /// <param name="vals">The variables to check for</param>
+        /// <returns>An array of all classes which have the requested variables</returns>
+        public string[] GetClassWithValues(params string[] vals)
         {
             List<string> className = new List<string>();
 
