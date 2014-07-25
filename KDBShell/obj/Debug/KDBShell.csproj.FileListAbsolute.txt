@@ -1,9 +1,0 @@
-C:\Users\Himanshu\Documents\Visual Studio 2012\Projects\Meka\KDBShell\bin\Debug\KDBShell.exe.config
-C:\Users\Himanshu\Documents\Visual Studio 2012\Projects\Meka\KDBShell\bin\Debug\Person.kdb
-C:\Users\Himanshu\Documents\Visual Studio 2012\Projects\Meka\KDBShell\bin\Debug\KDBShell.exe
-C:\Users\Himanshu\Documents\Visual Studio 2012\Projects\Meka\KDBShell\bin\Debug\KDBShell.pdb
-C:\Users\Himanshu\Documents\Visual Studio 2012\Projects\Meka\KDBShell\bin\Debug\Meka.Parser.dll
-C:\Users\Himanshu\Documents\Visual Studio 2012\Projects\Meka\KDBShell\bin\Debug\Meka.Parser.pdb
-C:\Users\Himanshu\Documents\Visual Studio 2012\Projects\Meka\KDBShell\obj\Debug\KDBShell.csprojResolveAssemblyReference.cache
-C:\Users\Himanshu\Documents\Visual Studio 2012\Projects\Meka\KDBShell\obj\Debug\KDBShell.exe
-C:\Users\Himanshu\Documents\Visual Studio 2012\Projects\Meka\KDBShell\obj\Debug\KDBShell.pdb

@@ -8,5 +8,14 @@ namespace Meka.Parser
 {
     public class KDBGenerator
     {
+        KDB data;
+
+        public string Generate()
+        {
+            string output = "";
+
+            return output;
+        }
+
     }
 }

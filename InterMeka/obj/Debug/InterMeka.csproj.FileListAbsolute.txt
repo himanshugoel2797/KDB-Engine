@@ -1,8 +1,0 @@
-c:\users\himanshu\documents\visual studio 2012\Projects\Meka\InterMeka\bin\Debug\InterMeka.exe.config
-c:\users\himanshu\documents\visual studio 2012\Projects\Meka\InterMeka\bin\Debug\InterMeka.exe
-c:\users\himanshu\documents\visual studio 2012\Projects\Meka\InterMeka\bin\Debug\InterMeka.pdb
-c:\users\himanshu\documents\visual studio 2012\Projects\Meka\InterMeka\bin\Debug\Meka.Parser.dll
-c:\users\himanshu\documents\visual studio 2012\Projects\Meka\InterMeka\bin\Debug\Meka.Parser.pdb
-c:\users\himanshu\documents\visual studio 2012\Projects\Meka\InterMeka\obj\Debug\InterMeka.csprojResolveAssemblyReference.cache
-c:\users\himanshu\documents\visual studio 2012\Projects\Meka\InterMeka\obj\Debug\InterMeka.exe
-c:\users\himanshu\documents\visual studio 2012\Projects\Meka\InterMeka\obj\Debug\InterMeka.pdb

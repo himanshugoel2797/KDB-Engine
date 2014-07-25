@@ -9,7 +9,7 @@ namespace KDBShell
 {
     class Program
     {
-        static KDBParser.Details CalculateAge(KDBParser.Details[] details)
+        static KDBParser.Details CalculateAge(string funcName, KDBParser.Details[] details)
         {
             int year = int.Parse(details[0].Value);
             return new KDBParser.Details()
@@ -22,6 +22,7 @@ namespace KDBShell
         {
             Console.Title = "KDBShell";
             KDBParser parser = new KDBParser("");
+            KDB data;
             parser.RegisterFunctionCall("calculateAge", CalculateAge);
 
             while (true)
@@ -34,26 +35,26 @@ namespace KDBShell
                 else if (input.StartsWith("load"))
                 {
                     parser.Code = "import \"" + input.Remove(0, 5).Trim() + "\"";
-                    parser.Parse();
+                    data = parser.Parse();
                     Console.WriteLine("Loaded " + input.Remove(0, 5).Trim());
                 }
                 else if ((input.StartsWith("is", true, null) || input.StartsWith("can", true, null)  ))
                 {
                     input = input.Replace(" of ", " ").Replace(" made ", " ").Replace(" a ", " ");
 
-                    Console.WriteLine(parser.Exists(input.Split(' ')[1].Trim(), input.Split(' ')[2].Trim()));
+                    Console.WriteLine(data.Exists(input.Split(' ')[1].Trim(), input.Split(' ')[2].Trim()));
                 }
                 else if (input.StartsWith("what is", true, null))
                 {
                     input = input.Replace("what is", "").Trim();
 
-                    Console.WriteLine(parser.GetValue(input.Split(' ')[0].Trim(), input.Split(' ')[1].Trim()).Value);
+                    Console.WriteLine(data.GetValue(input.Split(' ')[0].Trim(), input.Split(' ')[1].Trim()).Value);
                 }
                 else if (input.StartsWith("what contains", true, null))
                 {
                     input = input.Replace("what contains", "").Replace("?", "").Trim();
 
-                    string[] list = parser.GetClassWithValues(input.Split(','));
+                    string[] list = data.GetClassWithValues(input.Split(','));
 
                     foreach (string item in list)
                     {

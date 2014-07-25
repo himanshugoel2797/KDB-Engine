@@ -44,6 +44,7 @@
     <Compile Include="File.cs" />
     <Compile Include="GlobalData.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="KDB.cs" />
     <Compile Include="KDBGenerator.cs" />
     <Compile Include="KDBParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
